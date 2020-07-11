@@ -1,5 +1,7 @@
 const path = require("path")
 const VueLoaderPlugin = require("vue-loader/lib/plugin")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const webpack = require("webpack")
 module.exports = {
     mode: "production",
     entry: './src/main.js',
@@ -18,11 +20,13 @@ module.exports = {
             options: {
                 name: '[name].[ext]',
                 esModule: false,
-                limit: 10 * 1024
+                limit: 5 * 1024
             }
         },
         {
+
             test: /\.css$/,
+            use:["style-loader", 'css-loader']
         },
         {
             test: /\.less$/,
@@ -33,7 +37,16 @@ module.exports = {
 
     },
     plugins: [
-        new VueLoaderPlugin
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            template:'./public/index.html',
+            title:"Zjt's App"
+        }),
+        new webpack.DefinePlugin({
+            BASE_URL:"'/'"
+        })
+        
     ],
+
 
 }

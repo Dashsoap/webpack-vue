@@ -3,18 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "echo \"请使用 Webpack Dev Server 实现此任务\"",
+    "serve": "webpack-dev-server --config ./webpack.dev.js",
     "build": " webpack --config ./webpack.prod.js ",
-    "lint": "echo \"请使用 ESLint 实现此任务\""
+    "lint": "webpack --config ./webpack.common.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-vue": "^6.2.2",
     "vue": "^2.6.11",
-    "webpack": "^4.43.0"
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
     "css-loader": "^3.6.0",
+    "eslint": "^7.4.0",
     "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
     "less-loader": "^6.2.0",
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0",
